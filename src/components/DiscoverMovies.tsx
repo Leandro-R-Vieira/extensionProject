@@ -3,30 +3,30 @@ import { View } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
 import theme from '../global/theme';
 import { IMAGE_POSTER_URL } from '../config';
-import { GET } from '../services/api';
+import { GET, ResponseData } from '../services/api';
 
+interface Movie {
+  id: number;
+  backdrop_path: string;
+}
+interface DiscoverMoviesProps {
+  navigation: any;
+}
 
-const DiscoverMovies = props => {
-  const [movies, setMovies] = useState([]);
-  const [images, setImages] = useState([]);
+const DiscoverMovies: React.FC<DiscoverMoviesProps> = props => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
     const getMovies = async () => {
-      const response = await GET('/discover/movie');
+      const response: ResponseData<{ results: Movie[] }> = await GET('/discover/movie');
+      console.log(response)
       setMovies(response.results);
 
-      const images = response.results.map(
-        data => `${IMAGE_POSTER_URL}${data.backdrop_path}`,
-      );
-
-      let backImages = [];
-      for (let i = 0; i < 10; ++i) {
-        backImages = [...backImages, images[i]];
-      }
-
+      const images = response.results.map(data => `${IMAGE_POSTER_URL}${data.backdrop_path}`);
+      const backImages = images.slice(0, 10);
       setImages(backImages);
     };
-
     getMovies();
   }, []);
 
@@ -35,9 +35,7 @@ const DiscoverMovies = props => {
       <SliderBox
         images={images}
         dotColor={theme.colors.secondaryColor}
-        onCurrentImagePressed={index =>
-          props.navigation.navigate('movieDetails', { movieId: movies[index].id })
-        }
+        onCurrentImagePressed={index => props.navigation.navigate('movieDetails', { movieId: movies[index].id })}
       />
     </View>
   );

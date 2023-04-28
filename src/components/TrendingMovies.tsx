@@ -4,10 +4,20 @@ import { View, Image, FlatList, Text, TouchableOpacity } from 'react-native';
 import { POSTER_IMAGE } from '../config';
 import Styles from '../global/Styles';
 import Loader from './Loader';
-
-const TrendingMovies = props => {
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+interface Props {
+  url: string;
+  title: string;
+  navigation: NativeStackNavigationProp<{ movieDetails: { movieId: number } }>;
+}
+interface Movie {
+  id: number;
+  poster_path: string;
+  original_title: string;
+}
+const TrendingMovies = (props: Props) => {
   const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState<Movie[]>();
 
   useEffect(() => {
     const getMovies = async () => {
@@ -27,7 +37,7 @@ const TrendingMovies = props => {
         <View>
           <Text style={Styles.heading}>{props.title}</Text>
           <FlatList
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => index.toString()}
             data={movies}
             horizontal
             renderItem={item => displayMovies(item, props)}
@@ -38,7 +48,7 @@ const TrendingMovies = props => {
   );
 };
 
-const displayMovies = ({ item }, props) => {
+const displayMovies = ({ item }: { item: Movie }, props: Props) => {
   return (
     <TouchableOpacity
       onPress={() => {

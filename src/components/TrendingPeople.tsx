@@ -5,9 +5,21 @@ import Loader from './Loader';
 import Styles from '../global/Styles';
 import { IMAGE_POSTER_URL } from '../config';
 
-const TrendingPeople = props => {
+interface Props {
+  url: string;
+  isForPage?: string;
+  title: string;
+}
+
+interface Person {
+  id: string;
+  profile_path: string;
+  name: string;
+}
+
+const TrendingPeople: React.FC<Props> = props => {
   const [loading, setLoading] = useState(true);
-  const [people, setPeople] = useState();
+  const [people, setPeople] = useState<Person[]>();
 
   useEffect(() => {
     const getPeople = async () => {
@@ -38,7 +50,7 @@ const TrendingPeople = props => {
   );
 };
 
-const displayPeople = ({ item }) => {
+const displayPeople = ({ item }: { item: Person }) => {
   return (
     <View style={Styles.trendingPeopleContainer}>
       <Image

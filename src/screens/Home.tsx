@@ -5,7 +5,11 @@ import DiscoverMovies from '../components/DiscoverMovies';
 import TrendingPeople from '../components/TrendingPeople';
 import TrendingMovies from '../components/TrendingMovies';
 
-const Home = props => {
+interface Props {
+  navigation: any;
+}
+
+const Home = (props: Props) => {
   return (
     <View style={Styles.sectionBg}>
       <DiscoverMovies navigation={props.navigation} />
