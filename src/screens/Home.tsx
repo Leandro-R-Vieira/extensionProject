@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Styles from '../global/Styles';
 import DiscoverMovies from '../components/DiscoverMovies';
 import TrendingPeople from '../components/TrendingPeople';
@@ -11,6 +11,7 @@ interface Props {
 
 const Home = (props: Props) => {
   return (
+    <ScrollView>
     <View style={Styles.sectionBg}>
       <DiscoverMovies navigation={props.navigation} />
       <TrendingPeople title="Trending People" url="/trending/person/week" />
@@ -20,6 +21,7 @@ const Home = (props: Props) => {
         navigation={props.navigation}
       />
     </View>
+    </ScrollView>
   );
 };
 

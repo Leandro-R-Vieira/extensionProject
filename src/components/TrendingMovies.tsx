@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GET } from '../services/api';
-import { View, Image, FlatList, Text, TouchableOpacity } from 'react-native';
+import { View, Image, FlatList, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { POSTER_IMAGE } from '../config';
 import Styles from '../global/Styles';
 import Loader from './Loader';
@@ -18,10 +18,10 @@ interface Movie {
 const TrendingMovies = (props: Props) => {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState<Movie[]>();
-
+  
   useEffect(() => {
     const getMovies = async () => {
-      const data = await GET(props.url);
+      const data = await GET(props.url);      
       setMovies(data.results);
       setLoading(false);
     };
@@ -30,7 +30,7 @@ const TrendingMovies = (props: Props) => {
   }, []);
 
   return (
-    <View>
+    <View>      
       {loading ? (
         <Loader />
       ) : (
