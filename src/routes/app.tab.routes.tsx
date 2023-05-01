@@ -1,11 +1,11 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import theme from '../global/theme';
 import { Platform } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import  MovieList from '../screens/MovieList';
-import { AppStackRoutes } from './app.stack.routes';
-import MovieDetails from '../screens/MovieDetails';
 import  Favorites from '../screens/Favorites';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MovieDetails from '../screens/MovieDetails';
+import { AppStackRoutes } from './app.stack.routes';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -41,7 +41,7 @@ export function AppTabRoutes() {
         }}
       />
       <Screen
-        name="All Movies"
+        name="Movies"
         component={MovieList}
         options={{
           tabBarIcon: ({ color }) => (
@@ -57,7 +57,7 @@ export function AppTabRoutes() {
             <Ionicons name="heart" size={37} color={color} />
           ),
         }}
-      />  
+      />       
       <Screen
         name="Movie Details"
         component={MovieDetails}

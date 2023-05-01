@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import theme from './src/global/theme';
 import { ThemeProvider } from 'styled-components/native';
 
-function App() {
+function App() {  
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>

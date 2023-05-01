@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Linking, TouchableOpacity, ScrollView } from 'react-native';
 import { IMAGE_POSTER_URL } from '../config';
-import Styles from '../global/Styles';
-import Icon from '@expo/vector-icons/Entypo';
+import { View, Text, Image, Linking, TouchableOpacity, ScrollView } from 'react-native';
 import theme from '../global/theme';
+import { Share } from 'react-native';
+import Styles from '../global/Styles';
+import { GET } from '../services/api';
+import Loader from '../components/Loader';
+import Icon from '@expo/vector-icons/Entypo';
 import TrendingMovies from '../components/TrendingMovies';
 import TrendingPeople from '../components/TrendingPeople';
-import Loader from '../components/Loader';
-import { GET } from '../services/api';
 
 interface Genre {
   name: string;
 }
-
 interface Details {
   genres: Genre[];
   backdrop_path: string;
@@ -39,14 +39,7 @@ const MovieDetails = (props: Props) => {
   const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState<Details>();
 
-  useEffect(() => {
-    const getDetails = async () => {
-      const data = await GET(`/movie/${props.route.params.movieId}`);
-      setDetails(data);
-      setLoading(false);
-    };
-    getDetails();
-  }, []);
+
 
   const getGenre = () => {
     return details?.genres.map((genre) => (
@@ -55,6 +48,34 @@ const MovieDetails = (props: Props) => {
       </View>
     ));
   };
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: `Check out this movie: ${details?.original_title}`,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log(`Shared with activity type: ${result.activityType}`);
+        } else {
+          console.log('Shared successfully');
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log('Share dialog was dismissed');
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  useEffect(() => {
+    const getDetails = async () => {
+      const data = await GET(`/movie/${props.route.params.movieId}`);
+      setDetails(data);
+      setLoading(false);
+    };
+    getDetails();
+  }, [props.route.params.movieId]);
 
   return (
     <ScrollView style={Styles.sectionBg}>
@@ -69,6 +90,11 @@ const MovieDetails = (props: Props) => {
             />
           </View>
           <Text style={Styles.detailsMovieTitle}>{details?.original_title}</Text>
+          <View style={Styles.sharingContainer}>
+            <TouchableOpacity onPress={onShare}>
+              <Icon name="share" color={theme.colors.textColor} size={22} />
+            </TouchableOpacity>
+          </View>
           {details?.homepage ? (
             <View style={Styles.linkContainer}>
               <TouchableOpacity
@@ -80,6 +106,7 @@ const MovieDetails = (props: Props) => {
               </TouchableOpacity>
             </View>
           ) : null}
+
           <Text style={Styles.heading}>OVERVIEW</Text>
           <Text style={Styles.overview}>{details?.overview}</Text>
           <View style={Styles.detailsContainer}>

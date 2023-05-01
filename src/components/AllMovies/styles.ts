@@ -1,24 +1,25 @@
-import { RFValue } from 'react-native-responsive-fontsize';
 import { TextInput } from "react-native";
 import styled from 'styled-components/native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 `;
 export const SeacrhWrapper = styled.View`
-  margin-top: ${RFValue(170)}px;
+  margin-left: 10px;
+  margin-right: 10px;
+  align-items: center;
   flex-direction: row;
+  justify-content: center;
+  margin-top: ${RFValue(170)}px;
 `;
 
 export const SearchInput = styled(TextInput)` 
-  width: 90%; 
+  width: 85%; 
   padding: 12px;
+  border-radius: 5px;    
   font-size: ${RFValue(15)}px;  
-  border-radius: 5px;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-bottom: 8px;  
   color: ${({ theme }) => theme.colors.gray};
   background-color: ${({ theme }) => theme.colors.textColor};
 `;
@@ -28,29 +29,66 @@ export const TitleContainer = styled.View`
 `;
 
 export const Card = styled.TouchableOpacity`
-  position: relative;
   margin-left: 10px;
   margin-right: 10px;
+  position: relative;
 `;
 
 export const FavoriteButton = styled.TouchableOpacity` 
-  position: absolute;
   right: 0;
-  margin-right: 10px;
   margin-top: 20px;
+  margin-right: 10px;
+  position: absolute;
+`;
+
+export const ModalButton = styled.TouchableOpacity`    
+  margin-right: ${RFValue(12)}px;
 `;
 
 export const PosterImage = styled.Image`
-
-  height: ${RFValue(250)}px;;
-  width: ${RFValue(150)}px;;
-  border-radius: 10px;
   margin-top: 5px;
   margin-bottom: -3px;  
+  border-radius: 10px;
+  width: ${RFValue(150)}px;
+  height: ${RFValue(250)}px;
 `;
 
 export const Title = styled.Text` 
-  font-size: 20px;
   margin: 10px;  
+  font-size: 20px;
   color: ${({ theme }) => theme.colors.fadedColor};
+`;
+
+export const ModalContainer = styled.View`
+  width: 40%;
+  height: auto;
+  border-radius: 5px;
+  background-color: #1a2639;
+`;
+
+export const GenreButton = styled.TouchableOpacity``;
+
+export const GenreTitleContainer = styled.View`  
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+`;
+
+export const GenreSeparator = styled.View` 
+  height: 1px;
+  background-color: ${({ theme }) => theme.colors.textColor};
+`;
+
+export const GenreTitle = styled.Text` 
+  font-size: 21px;  
+  
+  color: ${({ theme }) => theme.colors.secondaryColor};
+`;
+
+export const GenreHeadTitle = styled.Text` 
+  font-size: 21px;  
+  margin-bottom: 2px;
+  font-style: italic;
+  align-self: center;
+  color: ${({ theme }) => theme.colors.textColor};
 `;

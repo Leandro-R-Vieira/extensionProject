@@ -1,5 +1,4 @@
 import React from 'react';
-import Icon from '@expo/vector-icons/Ionicons';
 import theme from '../global/theme';
 import Home  from '../screens/Home';
 import MovieDetails from '../screens/MovieDetails';
@@ -25,8 +24,7 @@ export function AppStackRoutes() {
 }
 
 const headerStyle = {
-  title: 'Movies',
+  title: 'Trending',
   headerStyle: { backgroundColor: theme.colors.baseColor },
-  headerTitleStyle: { color: theme.colors.textColor },  
-  headerRight: () => <Icon name="search" size={25} color={theme.colors.textColor} />
+  headerTitleStyle: { color: theme.colors.textColor }  
 }

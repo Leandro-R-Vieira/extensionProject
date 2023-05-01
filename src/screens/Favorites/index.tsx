@@ -16,6 +16,7 @@ import Loader from '../../components/Loader';
 import { GET } from '../../services/api';
 import { useFocusEffect } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
+import EmptyFavorite from '../../components/EmptyFavorite';
 
 interface Props {
   navigation: NativeStackNavigationProp<{ movieDetails: { movieId: number } }>;
@@ -67,6 +68,9 @@ const Favorites = (props: Props) => {
               keyExtractor={(item, index) => index.toString()}
               data={favorites}
               numColumns={2}
+              ListEmptyComponent={() => (
+                <EmptyFavorite />
+              )}
               renderItem={(item) =>
                 displayMovies(item, props, handleRemoveFavorite)
               }

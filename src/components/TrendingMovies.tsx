@@ -18,10 +18,10 @@ interface Movie {
 const TrendingMovies = (props: Props) => {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState<Movie[]>();
-  
+
   useEffect(() => {
     const getMovies = async () => {
-      const data = await GET(props.url);      
+      const data = await GET(props.url);
       setMovies(data.results);
       setLoading(false);
     };
@@ -30,7 +30,7 @@ const TrendingMovies = (props: Props) => {
   }, []);
 
   return (
-    <View>      
+    <View>
       {loading ? (
         <Loader />
       ) : (

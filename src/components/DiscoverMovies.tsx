@@ -20,7 +20,7 @@ const DiscoverMovies: React.FC<DiscoverMoviesProps> = props => {
   useEffect(() => {
     const getMovies = async () => {
       const response: ResponseData<{ results: Movie[] }> = await GET('/discover/movie');
-      
+
       setMovies(response.results);
 
       const images = response.results.map(data => `${IMAGE_POSTER_URL}${data.backdrop_path}`);

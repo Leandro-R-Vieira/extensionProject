@@ -54,10 +54,21 @@ const Styles = StyleSheet.create({
   linkContainer: {
     backgroundColor: theme.colors.secondaryColor,
     borderRadius: 100,
+    position: 'absolute',
     padding: 10,
     width: 45,
-    marginLeft: 20,
+    top: 250,
+    marginLeft: 10,
     marginTop: -20,
+  }, sharingContainer: {
+    alignSelf: 'flex-end',
+    position: 'absolute',
+    backgroundColor: theme.colors.secondaryColor,
+    borderRadius: 100,
+    padding: 10,    
+    width: 45,
+    right: 10,
+    marginTop: 230,
   },
   overview: {
     color: theme.colors.textColor,
