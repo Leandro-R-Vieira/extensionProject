@@ -1,9 +1,9 @@
-# :cinema: Projeto de extensão
+# :cinema: Extension Project
 ## O App para os cinéfilos de plantão.
 Este app fornece uma variedade enorme de filmes de todos os tipos e gêneros.
 
 <h1 align="center">
-  :movie_camera: Projeto de extensão :movie_camera: 
+  :movie_camera: Extension Project :movie_camera: 
 </h1>
 
 <p align="center">
@@ -60,7 +60,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
  
   # Faça um clone do repositório
 ```  
-  git clone <link-do-repositório>(https://github.com/Leandro-R-Vieira/testePloomes)
+  git clone <link-do-repositório>(https://github.com/Leandro-R-Vieira/extensionProject)
 ```
   # Navegue até a pasta do projeto e baixe as dependências<h3/>
 ```
