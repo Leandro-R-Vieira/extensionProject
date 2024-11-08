@@ -3,7 +3,7 @@
 Este app fornece uma variedade enorme de filmes de todos os tipos e gêneros.
 
 <h1 align="center">
-  :movie_camera: Teste Ploomes :movie_camera: 
+  :movie_camera: Projeto de extensão :movie_camera: 
 </h1>
 
 <p align="center">
