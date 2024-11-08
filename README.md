@@ -1,4 +1,4 @@
-# :cinema: Teste Ploomes
+# :cinema: Projeto de extensão
 ## O App para os cinéfilos de plantão.
 Este app fornece uma variedade enorme de filmes de todos os tipos e gêneros.
 
